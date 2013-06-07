@@ -15,8 +15,17 @@ import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 
+/**
+ * Clase encargada de cargar la web y la intranet del instituto del alumno
+ * @author adrSoft
+ * @version 1.0
+ *
+ */
 public class Webs extends JInternalFrame {
-
+    
+    /*
+     * Campos
+     */
     private static final long serialVersionUID = 1L;
     private JEditorPane editorPane;
     @SuppressWarnings("unused")
@@ -26,7 +35,9 @@ public class Webs extends JInternalFrame {
     private JButton mIntra;
 	
 	/**
-	 * Create the frame.
+	 * Constructor vacio. Se encarga de inicializar los componentes del frame.
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	public Webs() {
 		init();
@@ -35,6 +46,12 @@ public class Webs extends JInternalFrame {
 
 	  }
 
+	/**
+	 * Método que carga una web en un JEditorPane. La ruta de la web se pasa como argumento.
+	 * @author adrSoft
+	 * @version 1.0
+	 * @param rut = Ruta o URL de la web a mostrar.
+	 */
 	private void cargarWeb(String rut) {
 		editorPane = new JEditorPane();
 		editorPane.setBackground(UIManager.getColor("textHighlight"));
@@ -51,7 +68,14 @@ public class Webs extends JInternalFrame {
 		
 	}
 
+	/**
+	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void createEvents() {
+	    
+	    	//Botón WEB
 		mWeb.addActionListener(new ActionListener() {
 			
 			@Override
@@ -61,6 +85,7 @@ public class Webs extends JInternalFrame {
 			}
 		});
 		
+		//Botón INTRANET
 		mIntra.addActionListener(new ActionListener() {
 			
 			@Override
@@ -72,6 +97,11 @@ public class Webs extends JInternalFrame {
 		
 	}
 
+	/**
+	 * Inicializador de los componentes en el JFrame.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void init() {
 		setBounds(100, 100, 710, 612);
 		((javax.swing.plaf.basic.BasicInternalFrameUI) 
@@ -91,11 +121,7 @@ public class Webs extends JInternalFrame {
 			mIntra.setActionCommand("INTRANET");
 			buttonPane.add(mIntra);
 		    }
-		
-		
-		
+	
 	}
-
-
 	}
 

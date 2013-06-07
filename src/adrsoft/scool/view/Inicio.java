@@ -26,23 +26,36 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import adrsoft.scool.pojos.Alumnos;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
+/**
+ * Clase de login inicial
+ * @author adrSoft
+ * @version 1.0
+ *
+ */
 public class Inicio extends JFrame {
 
-
+    	/*
+    	 * Campos
+    	 */
     	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final Action action = new SwingAction();
-	private JButton btnNewButton;
+	private JButton btnSalir;
 	private JTextField textField;
 	private JPasswordField passwordField;
-	private JButton btnNewButton_1;
+	private JButton btnGo;
 	private String textmail;
 	private Session session;
 	private String textpass;
 	
 	/**
-	 * Launch the application.
+	 * Clase Lanzadera de la aplicación
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -61,6 +74,7 @@ public class Inicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicio() {
+		setLocationRelativeTo(null);
 		setTitle(" %&%%&% sCooL %&%%&% ");
 		createConnection();
 		init();
@@ -80,40 +94,48 @@ public class Inicio extends JFrame {
 	}
 	
 	/**
-	 * Inicializador
+	 * Inicializador de los componentes en el JFrame.
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	private void init(){
-
 		setUndecorated(true);
 		setForeground(new Color(0, 0, 51));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
+
 		contentPane.setBackground(UIManager.getColor("textHighlight"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		btnNewButton = new JButton("");
+		btnSalir = new JButton("");
+		btnSalir.setBorder(null);
+		btnSalir.setContentAreaFilled(false);
 		
-		btnNewButton.setToolTipText("Salir");
-		btnNewButton.setBackground(UIManager.getColor("textHighlight"));
-		btnNewButton.setIcon(new ImageIcon(Inicio.class.getResource("/adrsoft/scool/resources/images/high/exit.gif")));
+		btnSalir.setToolTipText("Salir");
+		btnSalir.setBackground(UIManager.getColor("textHighlight"));
+		btnSalir.setIcon(new ImageIcon(Inicio.class.getResource("/adrsoft/scool/resources/images/high/exit.gif")));
 		
 		JLabel lblUsuario = new JLabel("Email");
 		lblUsuario.setFont(new Font("Verdana", Font.BOLD, 18));
 		
 		textField = new JTextField();
+	
 		textField.setColumns(10);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
 		lblContrasea.setFont(new Font("Verdana", Font.BOLD, 18));
 		
 		passwordField = new JPasswordField();
-		btnNewButton_1 = new JButton("");
-		btnNewButton_1.setBackground(UIManager.getColor("textHighlight"));
-		btnNewButton_1.setToolTipText("Entar");
-		btnNewButton_1.setIcon(new ImageIcon(Inicio.class.getResource("/adrsoft/scool/resources/images/high/accept.png")));
+	
+		btnGo = new JButton("");
+		btnGo.setBorder(null);
+		btnGo.setContentAreaFilled(false);
+		btnGo.setBackground(null);
+		btnGo.setToolTipText("Entar");
+		btnGo.setIcon(new ImageIcon(Inicio.class.getResource("/adrsoft/scool/resources/images/high/accept.png")));
 	
 	
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -121,12 +143,12 @@ public class Inicio extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(633, Short.MAX_VALUE)
-					.addComponent(btnNewButton))
+					.addComponent(btnSalir))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(btnNewButton_1))
+							.addComponent(btnGo))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(225)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -141,7 +163,7 @@ public class Inicio extends JFrame {
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(266, Short.MAX_VALUE)
+					.addContainerGap(216, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblUsuario))
@@ -150,53 +172,86 @@ public class Inicio extends JFrame {
 						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblContrasea))
 					.addGap(18)
-					.addComponent(btnNewButton_1)
+					.addComponent(btnGo)
 					.addGap(74)
-					.addComponent(btnNewButton))
+					.addComponent(btnSalir))
 		);
 		contentPane.setLayout(gl_contentPane);
 	
 	}
 	
 	/**
-	 * Creador de eventos
+	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	private void createEvents(){
-		btnNewButton.addActionListener(new ActionListener() {
+	    
+	    	//Botón salir
+		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
 		});
 		
-		btnNewButton_1.addActionListener(new ActionListener() {
-		
-
-			
+		//Botón login
+		btnGo.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				//mail tiene que contener un mail de la base de datos
-				textmail = textField.getText();
-				textpass = passwordField.getText();
-		            Query query = session.createQuery("SELECT a FROM Alumnos a");
-		            List<Alumnos> alumnos = query.list();
-		            for (Alumnos alumno : alumnos) {
-		            
-		            				AlumnosMain alu = new AlumnosMain(textmail, alumno.getNombre(), alumno.getApellidos(), alumno.getClub());
-							alu.setVisible(true);
-							contentPane.setEnabled(false);
-							contentPane.setVisible(false);	
-						
-		            	
-		            }
-
+				check();
 			}
 		});
 		
-	
+		//Pulsación de enter
+		passwordField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER)
+	            {
+	               check();
+	            }
+			}
+		});
+		
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER)
+	            {
+	               check();
+	            }
+			}
+		});
 		
 		
 	}
 	
+	/**Método que comprueba si el Email y la Contraseña introducidos corresponden con algún usuario
+	 * existente en la base de datos.
+	 *  @author adrSoft
+	 * @version 1.0
+	 */
+	protected void check() {
+		//mail tiene que contener un mail de la base de datos
+		textmail = textField.getText();
+		textpass = passwordField.getText();
+            Query query = session.createQuery("SELECT a FROM Alumnos a");
+            List<Alumnos> alumnos = query.list();
+            for (Alumnos alumno : alumnos) {
+            	if(textmail.equals(alumno.getEmail()) && textpass.equals(alumno.getPassword())){
+            		AlumnosMain alu = new AlumnosMain(textmail, alumno.getNombre(), alumno.getApellidos(), alumno.getClub(), alumno.getIdalumno());
+					alu.setVisible(true);
+					contentPane.setEnabled(false);
+					contentPane.setVisible(false);
+            	}
+            }
+	}
+
+	/**
+	 * Inicializador de la conexión entre la aplicación y la base de datos.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void createConnection() {
      	
 		SessionFactory sessionFactory;

@@ -28,8 +28,19 @@ import adrsoft.scool.club.Noticias;
 
 
 
-
+/**
+ * Clase que recoge el club del alumno y renderiza un portal donde puede interactuar con las caracteristicas
+ * del club, así como con sus miembros.
+ * 
+ * @author adrSoft
+ *@version 1.0
+ */
 public class Club extends JInternalFrame {
+
+    	/*
+    	 * Campos
+    	 */
+    	private static final long serialVersionUID = 1L;
 	private JButton btnNewButton;
 	private JButton btnNewButton_6;
 	private JButton btnNewButton_1;
@@ -40,13 +51,13 @@ public class Club extends JInternalFrame {
 	private JDesktopPane clubDesktopPane;
 	private int mClub;
 
-	/**
-	 * Launch the application.
-	 */
 
 
 	/**
-	 * Create the frame.
+	 *Constructor que inicializa la clase habiendole pasado el id del club a mostrar.
+	 *@author adrSoft
+	 *@version 1.0
+	 *@param clu = idclub(identificador del club del alumno)
 	 */
 	public Club(int clu) {
 		getContentPane().setBackground(new Color(153, 204, 255));
@@ -55,13 +66,19 @@ public class Club extends JInternalFrame {
 		this.mClub = clu;
 		init();
 		createEvents();
-
+		System.out.print("Club/ club:" +mClub);
 
 	}
 
+	
+	/**
+	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void createEvents() {
 	    
-	    //Boton Información
+	    	//Boton Información
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Informacion info = new Informacion(mClub);
@@ -80,7 +97,7 @@ public class Club extends JInternalFrame {
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				Normas normas = new Normas();
+				Normas normas = new Normas(mClub);
 				normas.setVisible(true);
 				clubDesktopPane.add(normas);
 					try {
@@ -171,6 +188,11 @@ public class Club extends JInternalFrame {
 		
 	}
 
+	/**
+	 * Inicializador de los componentes en el JFrame.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void init() {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(153, 204, 255));
@@ -203,6 +225,7 @@ public class Club extends JInternalFrame {
 		clubDesktopPane.setLayout(gl_clubDesktopPane);
 		
 		JToolBar toolBar = new JToolBar();
+		toolBar.setBorder(null);
 		toolBar.setBackground(UIManager.getColor("textHighlight"));
 		toolBar.setFloatable(false);
 		panel.add(toolBar);

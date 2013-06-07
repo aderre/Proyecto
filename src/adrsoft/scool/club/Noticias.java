@@ -11,12 +11,19 @@ public class Noticias extends JInternalFrame {
     private static final long serialVersionUID = 1L;
 
 	/**
-	 * Create the frame.
+	 * Constructor vacío de la clase.
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	public Noticias() {
 	    init();
 	    }
 
+	/**
+	 * Inicializador de los componentes en el JFrame.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void init() {
 
 	    
@@ -39,8 +46,6 @@ public class Noticias extends JInternalFrame {
 		);
 		getContentPane().setLayout(groupLayout);
 
-	
-	    
 	}
 
 }

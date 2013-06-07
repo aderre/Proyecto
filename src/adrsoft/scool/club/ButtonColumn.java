@@ -8,9 +8,12 @@ import javax.swing.table.*;
 
 import adrsoft.scool.view.AlumnosMain;
 
-public class ButtonColumn extends AbstractCellEditor
-	implements TableCellRenderer, TableCellEditor, ActionListener, MouseListener
-{
+/**
+ * Renderizador y editor de botones.
+ * @author apegna
+ *@version 1.0
+ */
+public class ButtonColumn extends AbstractCellEditor implements TableCellRenderer, TableCellEditor, ActionListener, MouseListener{
 
     	private static final long serialVersionUID = 1L;
 	private JTable table;

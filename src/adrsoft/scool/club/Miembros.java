@@ -20,10 +20,14 @@ public class Miembros extends JInternalFrame {
     	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
     	private JScrollPane scrollPane;
+    	private JPanel panel;
+    	private JPanel panelTabla;
 
 
 	/**
-	 * Create the frame.
+	 * Constructor vacío de la clase.
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	public Miembros() {
 		setBorder(null);
@@ -35,10 +39,14 @@ public class Miembros extends JInternalFrame {
 	}
 
 
-
+	/**
+	 * Inicializador de los componentes en el JFrame.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void init() {
 	    
-	    	JPanel panel = new JPanel();
+	        panel = new JPanel();
 		panel.setBackground(new Color(153, 204, 255));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -66,7 +74,7 @@ public class Miembros extends JInternalFrame {
 				 DefaultTableModel dtm= new DefaultTableModel(datos,columnNames);
 	
 				
-				JPanel panelTabla = new JPanel();
+				panelTabla = new JPanel();
 				panelTabla.setBackground(new Color(153, 204, 255));
 				contentPane.add(panelTabla, BorderLayout.NORTH);
 				final JTable table = new JTable(dtm);

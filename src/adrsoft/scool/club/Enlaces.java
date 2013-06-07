@@ -8,21 +8,30 @@ import javax.swing.JLabel;
 
 public class Enlaces extends JInternalFrame {
 
-
+    /*
+     * Campos
+     */
     private static final long serialVersionUID = 1L;
+    private JLabel lblEnlaces;
 
 	/**
-	 * Create the frame.
+	 * Constructor vacio.
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	public Enlaces() {
 		setBounds(100, 100, 710, 300);
-		
 		init();
 	}
 
+	/**
+	 * Inicializador de los componentes en el JFrame.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void init() {
 
-		JLabel lblEnlaces = new JLabel("Enlaces");
+		lblEnlaces = new JLabel("Enlaces");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
